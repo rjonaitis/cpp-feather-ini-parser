@@ -122,6 +122,7 @@ public:
   T getAs(fini_string_t key, T def = T());
   void set(fini_string_t section, fini_string_t key, fini_string_t value);
   void set(fini_string_t key, fini_string_t value);
+  void set(fini_string_t key, int64_t value);
 };
 
 /// Definition
@@ -349,4 +350,9 @@ inline void INI::set(fini_string_t section, fini_string_t key, fini_string_t val
 
 inline void INI::set(fini_string_t key, fini_string_t value) {
   (*current)[key] = value;
+}
+
+inline void INI::set(fini_string_t key, int64_t value)
+{
+  set(key, std::to_string(value));
 }
